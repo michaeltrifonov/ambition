@@ -78,10 +78,10 @@ def _default_config() -> dict:
     now = time.time()
     return {
         "status": C.STATUS_RUNNING,
-        # OpenRouter model slug (see openrouter.ai/models). Confirm the exact slug for
-        # your account; the agent can hot-swap it via request_mutation. With no
+        # OpenRouter model slug (see openrouter.ai/models). Set UAA_MODEL in .env to pick it
+        # without editing code; the agent can hot-swap it later via request_mutation. With no
         # OPENROUTER_API_KEY set, use a bare Anthropic id like "claude-opus-4-8" instead.
-        "current_model": "anthropic/claude-opus-4.8",
+        "current_model": os.environ.get("UAA_MODEL", "anthropic/claude-opus-4.8"),
         "system_prompt": DEFAULT_SYSTEM_PROMPT,
         "active_tools": [],          # names of agent-authored in-process tools in mcp/
         "mcp_servers": [],           # registered MCP servers the agent installs/enables
