@@ -1,0 +1,19 @@
+.env
+venv/
+__pycache__/
+*.pyc
+
+# Runtime state — the organism's live nervous system + logs are not source.
+state/config.json
+state/config.lock
+state/daemon.pid
+state/.fakeboot*
+state/*.tmp
+state/heartbeat
+state/STOP
+state/.last_good/
+state/.staged/
+state/config.corrupt.*.json
+logs/
+mcp/*
+!mcp/.gitkeep

@@ -1,0 +1,17 @@
+{
+  "active_tools": [],
+  "boot_count": 0,
+  "created_at": null,
+  "context_window": 200000,
+  "current_model": "anthropic/claude-opus-4.8",
+  "effort": "high",
+  "last_error": null,
+  "mcp_servers": [],
+  "memory_context": "",
+  "restart_count": 0,
+  "status": "running",
+  "system_prompt": "(the agent's editable core directive — see uaa/state.py DEFAULT_SYSTEM_PROMPT)",
+  "thinking": true,
+  "updated_at": null,
+  "wake_time": null
+}

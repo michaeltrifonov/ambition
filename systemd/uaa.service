@@ -1,0 +1,28 @@
+# Install: edit the paths/user below, then:
+#   sudo cp systemd/uaa.service /etc/systemd/system/uaa.service
+#   sudo systemctl daemon-reload && sudo systemctl enable --now uaa
+# Watch:    journalctl -u uaa -f   (and tail logs/daemon.log, logs/agent.log)
+# Stop the organism:  touch state/STOP   (or: systemctl stop uaa)
+
+[Unit]
+Description=Unrestricted Autonomous Agent (UAA) daemon
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# --- EDIT THESE for your droplet ---
+User=root
+WorkingDirectory=/root/ambition
+Environment=DISPLAY=:1
+# The daemon drives the desktop on DISPLAY :1 — make sure the VNC/Xvfb server for
+# that display is already running (setup.sh starts it). If you run VNC as a
+# different user, set User= to match so it can reach the X socket.
+ExecStart=/root/ambition/venv/bin/python /root/ambition/daemon.py
+
+# The daemon is its own supervisor, but restart it if the whole process is killed.
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
