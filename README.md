@@ -120,10 +120,6 @@ with no OR key it talks to Anthropic first-party. `uaa/constants.py` maps each m
 id or OpenRouter slug) to its `computer_2025xxxx` tool version + beta header. The agent manages
 cost by hot-swapping its Claude tier and restarting.
 
-> One thing to confirm on the droplet's first real run: that OpenRouter forwards the
-> `computer-use` beta to the Anthropic provider. If it doesn't, the fallback is custom
-> click/type/screenshot function tools driven by a vision model (built on demand).
-
 ---
 
 ## Owner controls (the daemon's job, and a human override)
