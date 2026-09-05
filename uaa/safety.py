@@ -110,7 +110,7 @@ def restore_source() -> bool:
     system_prompt) and mcp/ (self-authored tools) are the organism's accumulated
     state, not the thing that crashed — wiping them on every code rollback would
     erase the agent's memory and tools, which is worse than the bug it recovers
-    from. The operator rails the agent must not be able to subvert (spend cap,
+    from. The operator rails the agent must not be able to subvert (the
     killswitch) live under state/, which the agent can't write to directly; those
     survive rollback intentionally.
     """

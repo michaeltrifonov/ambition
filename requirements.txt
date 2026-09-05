@@ -3,7 +3,7 @@ anthropic>=0.49.0
 
 # MCP client — connect to the MCP servers the agent installs/registers (stdio + http).
 # Optional: if absent, the agent still runs; registered MCP servers just don't load.
-mcp>=1.2.0
+mcp>=1.2.0,<2
 
 # Screenshot cropping for the computer tool's `zoom` action (optional but recommended)
 Pillow>=10.0.0

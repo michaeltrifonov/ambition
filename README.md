@@ -16,6 +16,27 @@ the harness is the nervous system.
 
 ---
 
+## What actually happened
+
+The harness worked; the premise produced a negative result worth recording. Run in mid-2026
+(a Claude Opus 4.x driver), across several unattended sessions:
+
+- **Given the open-ended charter — no task, total freedom — the agent explored the machine,
+  concluded nothing needed doing without its operator, and put itself to sleep.** The
+  "unrestricted" agent's dominant unattended behavior was waiting for a human.
+- Pressed to act autonomously (urgent framing: your operator is unreachable except by email,
+  get yourself an address and write to him), it would not register accounts on its own. It
+  kept deferring to its operator and sleeping.
+- Given an open "make money" objective, it built small Etsy-listing generators on free
+  APIs — modest, but they ran.
+- The self-modification machinery is proven by the offline test suite (mutation, rollback,
+  MCP self-install, hang-kill); in live runs the agent rarely reached for any of it unprompted.
+
+The assistant leash is trained in deeper than any harness can reach — at least at this model
+generation. Parked until that changes; the harness is ready for the next one.
+
+---
+
 ## Architecture: God-process / Organism
 
 ```
@@ -78,7 +99,7 @@ The agent changes any of these by calling `request_mutation(changes={...})`, whi
 
 ## Capabilities → where they live
 
-| Capability (SRD §) | Implementation |
+| Capability | Implementation |
 |---|---|
 | Total OS & UI control | `uaa/computer.py` (scrot/xdotool on X11) + `bash` + `text_editor` in `uaa/tools.py` |
 | Self-modification | agent edits files under `uaa/` → `request_mutation` reboots into them |
@@ -87,7 +108,7 @@ The agent changes any of these by calling `request_mutation(changes={...})`, whi
 | Dynamic capability — in-process tools | `uaa/mcp_forge.py` — `create_tool` writes/registers a module, `call_tool` runs it |
 | Economic self-management | the agent picks its own driving model (`set_model` / `changes.current_model`) + restarts; no budget is imposed |
 | Temporal autonomy | `sleep` tool + daemon scheduling |
-| Organic communication | no help tool — the agent opens a browser and emails the creator itself |
+| Operator communication | `message_operator` (guaranteed inbox, read via `uaa.ctl messages`) — or any email/chat channel the agent sets up itself |
 
 ### Inference: Claude via OpenRouter
 

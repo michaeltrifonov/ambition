@@ -4,7 +4,7 @@ When the agent installs or builds software and wants a reusable programmatic
 interface to it, it authors a small Python module (exposing `run(args: dict)
 -> str`), registers a tool schema in config.active_tools, and calls it on later
 turns with call_tool. The module persists in mcp/, so the capability survives
-reboots — the same intent as the SRD's "self-MCP", realized as in-process tools.
+reboots — self-grown capability, realized as in-process tools.
 
 (A future extension can export these modules as stdio MCP servers; the registry
 shape here — name + JSON-schema + code file — is deliberately MCP-compatible.)
